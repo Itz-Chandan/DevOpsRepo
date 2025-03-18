@@ -1,24 +1,24 @@
 name: DevOps CI/CD
 
-on: 
-push:
-pull_request:
+on:
+  push:
+  pull_request:
 
 jobs:
-build:
-runs-on: ubuntu-latest
-env: 
-APP_ENV: production
-steps:
-- uses: actions/checkout@v3
-- uses: actions/setup-node@v3
-with:
-   node-version: 18 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
-- run: npm install && npm test
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-deploy:
-runs-on: ubuntu-latest
-needs: build
-steps:
--run: echo "Deploying..."
+      - run: npm install && npm test
+
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: echo "Deploying..."
