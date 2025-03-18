@@ -14,7 +14,8 @@ jobs:
          with:
            node-version: 18
                        
-       - run: npm install && npm test  
+       - run: npm install && npm test
+         working-directory: ./DevOpsRepo
 
   deploy:
     runs-on: ubuntu-latest
